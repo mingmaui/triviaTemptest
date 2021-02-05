@@ -1,22 +1,59 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using UnityEngine.SceneManagement;
-//using MySql.Data.MySqlClient;
-
+using UnityEngine.Networking;
 public class RegisterScript : MonoBehaviour
 {
-    public InputField pwdField;
-    public InputField rePwdField;
-    public Text reqTxt;
-    public void RegisterButton(){
-        if(pwdField.text == rePwdField.text){
-            SceneManager.LoadScene(sceneName:"TeacherMenu");
+    [SerializeField] InputField SchoolName;
+    [SerializeField] Button RegSBtn;
+    [SerializeField] Text msgTxt;
+
+    WWWForm form;
+
+    public void RegSchoolBtn(){
+        if(SchoolName.text==""){
+            msgTxt.text = "<color=red>Please input a school</color>";
+            Debug.Log("<color=red>"+msgTxt.text+"</color>");
+
         }
-        
+
         else{
-            reqTxt.text = "Password not match";
-        }
+            StartCoroutine(RegSchool());
+        }      
     }
+
+    IEnumerator RegSchool(){
+        form = new WWWForm();
+    
+        form.AddField("SchoolName", SchoolName.text);
+
+        UnityWebRequest w = UnityWebRequest.Post("http://localhost/TriviaTempest/register.php", form);
+		yield return w.SendWebRequest();
+
+        if(w.isNetworkError) {
+            Debug.Log(w.error);
+        }
+        else {
+            if(w.isDone){
+                msgTxt.text = "School registered successfully!";
+                Debug.Log("School registered complete!");
+            }
+            
+        }
+
+        w.Dispose();
+    }
+
+    public void StudBtn(){
+        SceneManager.LoadScene(sceneName:"AddStudScene");
+    }
+
+    public void TeacherBtn(){
+        SceneManager.LoadScene(sceneName:"AddTrScene");
+    }
+
+    public void LogOutBtn(){
+		SceneManager.LoadScene(sceneName:"LoginScene");
+	}
 }
