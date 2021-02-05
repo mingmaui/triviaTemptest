@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
@@ -12,17 +13,32 @@ public class ChangePassScript : MonoBehaviour
     [SerializeField] Text ChangePassLabel;
     [SerializeField] Text NewPassLabel;
     [SerializeField] Text ReenterPassLabel;
+    [SerializeField] Text changedBtnLabel;
 
 
     WWWForm form;
 
     public void ChangePassBtn(){
-        if(SchoolName.text==""){
-            msgTxt.text = "<color=red>Please input a school</color>";
-            Debug.Log("<color=red>"+msgTxt.text+"</color>");
+        if(currentPassword.text == ""){
+            ChangePassLabel.text = "<color=red>Please Enter your Password</color>";
+            Debug.Log("<color=red>"+ChangePassLabel.text+"</color>");
 
         }
+        else if(currentPassword.text != "215169924920431"){
+            ChangePassLabel.text = "<color=red>Password Incorrect</color>";
+            Debug.Log("<color=red>"+ChangePassLabel.text+"</color>");
 
+        }
+        else if(newPassword.text==""){
+            NewPassLabel.text = "<color=red>Please Enter New Password</color>";
+            Debug.Log("<color=red>"+NewPassLabel.text+"</color>");
+
+        }
+        else if(newPassword.text != reenteredPassword.text){
+            ReenterPassLabel.text = "<color=red>Password does not Match</color>";
+            Debug.Log("<color=red>"+ReenterPassLabel.text+"</color>");
+
+        }
         else{
             StartCoroutine(ChangePass());
         }      
@@ -30,10 +46,12 @@ public class ChangePassScript : MonoBehaviour
 
     IEnumerator ChangePass(){
         form = new WWWForm();
-    
-        form.AddField("SchoolName", SchoolName.text);
+        string hash = Hash(reenteredPassword.text);
 
-        UnityWebRequest w = UnityWebRequest.Post("http://localhost/TriviaTempest/register.php", form);
+        form.AddField("Password", hash);
+        form.AddField("Number", "215169924920431");
+
+        UnityWebRequest w = UnityWebRequest.Post("http://localhost/TriviaTempest/change_pass.php", form);
 		yield return w.SendWebRequest();
 
         if(w.isNetworkError) {
@@ -41,8 +59,8 @@ public class ChangePassScript : MonoBehaviour
         }
         else {
             if(w.isDone){
-                msgTxt.text = "School registered successfully!";
-                Debug.Log("School registered complete!");
+                changedBtnLabel.text = "Password Changed successfully!";
+                Debug.Log("Password Changed complete!");
             }
             
         }
@@ -50,15 +68,16 @@ public class ChangePassScript : MonoBehaviour
         w.Dispose();
     }
 
-    public void StudBtn(){
-        SceneManager.LoadScene(sceneName:"AddStudScene");
-    }
-
-    public void TeacherBtn(){
-        SceneManager.LoadScene(sceneName:"AddTrScene");
-    }
-
-    public void LogOutBtn(){
-		SceneManager.LoadScene(sceneName:"LoginScene");
-	}
+    public static string Hash(string s)
+    => BitConverter.ToString(
+        System.Security
+            .Cryptography.MD5
+            .Create()
+            .ComputeHash(
+                System.Text
+                    .Encoding
+                    .UTF8
+                    .GetBytes(s)
+            )
+    ).Replace("-","");
 }
