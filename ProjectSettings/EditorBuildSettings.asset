@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/LoginScene.unity
+    guid: 7f3918a4a1b4d2a4aa847acef662bdaa
+  - enabled: 1
+    path: Assets/Scenes/TeacherMenu.unity
+    guid: edc04c06a8f9e964a8c45913d36a76d5
+  - enabled: 1
+    path: Assets/Scenes/TeacherLeaderboard.unity
+    guid: 921b3c9f1f96fde4fb0a9f74d093b7f4
+  - enabled: 1
+    path: Assets/Scenes/StudentMenu.unity
+    guid: 3a7e96c48e59d674c8d6f655826b09ae
+  - enabled: 1
+    path: Assets/Scenes/RegisterScene.unity
+    guid: bad9f4e6b847f1d4585f3d2e6868203a
+  - enabled: 1
+    path: Assets/Scenes/createNewRoom.unity
+    guid: f201ffb233158264881393c6007756aa
+  - enabled: 1
+    path: Assets/Scenes/TopicScene.unity
+    guid: fb02e0dd161fa1b46ae8a8059c95c720
+  - enabled: 1
+    path: Assets/Scenes/DictScene.unity
+    guid: 4b3d5878a4b453b4fb807eecff05bb19
+  - enabled: 1
+    path: Assets/Scenes/EndlessScene.unity
+    guid: 858b71d58bdc03e408f5be26849d0bcd
+  - enabled: 1
+    path: Assets/Scenes/HelpStudScene.unity
+    guid: d81034916824a6f40b9c3e4c66063674
+  - enabled: 1
+    path: Assets/Scenes/HelpTeachScene.unity
+    guid: ad3cf30d411444745beaf7c631a22121
+  - enabled: 1
+    path: Assets/Scenes/TriviaScene.unity
+    guid: 126a7f1cbccb1b742b87554fefaa79c1
+  - enabled: 1
+    path: Assets/Scenes/StudentLeaderboard.unity
+    guid: b2450cd5e5c4e9148ae6c6a9cc7635b6
+  - enabled: 1
+    path: Assets/Scenes/ChangePassword.unity
+    guid: a2435a21c9f50fb42b22ba5895df6a88
+  m_configObjects: {}
