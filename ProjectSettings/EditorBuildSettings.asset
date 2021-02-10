@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ChangePassword.unity
     guid: a2435a21c9f50fb42b22ba5895df6a88
+  - enabled: 1
+    path: Assets/Scenes/TeacherLoginScene.unity
+    guid: 85d47c60fefc2dd4389397ab83f8e09d
   m_configObjects: {}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class teacherButtons : MonoBehaviour
 {
@@ -14,8 +15,8 @@ public class teacherButtons : MonoBehaviour
     }
 
     public void ExitGame(){
+        StartCoroutine (sessionEnd ());
         Application.Quit();
-        Debug.Log("Game is exiting");
     }
 
 
@@ -37,11 +38,21 @@ public class teacherButtons : MonoBehaviour
     }
 
     public void ReturnToLoginScene(){
-        SceneManager.LoadScene(sceneName:"LoginScene");
+        StartCoroutine (sessionEnd ());
+        SceneManager.LoadScene(sceneName:"TeacherLoginScene");
+        
+    }
+
+    IEnumerator sessionEnd(){
+        WWW w = new WWW ("http://localhost/TriviaTempest/endSession.php");
+        yield return w;
+        if(w.text.Contains("Success")){
+            Debug.Log("<color=red>Session Cleared</color>");
+        }
     }
 
     public void ExitHelpScene(){
-        SceneManager.LoadScene(sceneName:"LoginScene");
+        SceneManager.LoadScene(sceneName:"TeacherLoginScene");
     }
 
     public void RedirectToTeacherHELP(){

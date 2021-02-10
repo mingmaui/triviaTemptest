@@ -36,8 +36,6 @@ public class TeacherLogin : MonoBehaviour
 		form.AddField ("Number", Number.text);
         string hash = Hash(password.text);
 		form.AddField ("password", hash);
-        
-        Debug.Log(hash);
 
 		WWW w = new WWW ("http://localhost/TriviaTempest/login_teacher.php", form);
 		yield return w;
@@ -55,7 +53,7 @@ public class TeacherLogin : MonoBehaviour
                 else {
 					SceneManager.LoadScene(sceneName:"TeacherMenu");
                     Debug.Log("Login Successful");
-					Debug.Log("<color=green>"+w.text+"</color>");//user exist
+					Debug.Log(w.text);//user exist
 				}
 			}
 		}
