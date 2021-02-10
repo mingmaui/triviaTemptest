@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 99121819}
   - component: {fileID: 99121818}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: txtBoxSearch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -526,7 +526,7 @@ GameObject:
   - component: {fileID: 175787726}
   - component: {fileID: 175787725}
   m_Layer: 5
-  m_Name: Text
+  m_Name: searchDef
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,13 +583,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu lorem
-    lacinia, placerat magna nec, blandit nulla. Curabitur eget lacinia mauris. In
-    pellentesque rhoncus tortor, nec finibus arcu tristique nec. Maecenas tincidunt
-    lorem non malesuada vulputate. Etiam bibendum nisi ac velit scelerisque elementum.
-    Donec ullamcorper, lectus sed placerat blandit, tellus quam luctus elit, sit
-    amet venenatis urna metus sed libero. Vivamus et pellentesque nisi, et egestas
-    ligula.
+  m_Text: 
 --- !u!222 &175787726
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1054,7 +1048,7 @@ GameObject:
   - component: {fileID: 649016648}
   - component: {fileID: 649016647}
   m_Layer: 5
-  m_Name: searchBtn
+  m_Name: searchBtn1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1121,7 +1115,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 649016648}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2137036784}
+        m_MethodName: searchBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &649016648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1683,7 +1688,7 @@ GameObject:
   - component: {fileID: 1437627585}
   - component: {fileID: 1437627584}
   m_Layer: 5
-  m_Name: serchWrd
+  m_Name: showSearch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1740,7 +1745,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BACTERIA
+  m_Text: 
 --- !u!222 &1437627585
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1962,6 +1967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2137036783}
   - component: {fileID: 2137036782}
+  - component: {fileID: 2137036784}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1995,3 +2001,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2137036784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137036781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1195f9dc7d1eb14a8740da6ed101086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtBoxSearch: {fileID: 99121818}
+  searchBtn1: {fileID: 649016647}
+  showSearch: {fileID: 1437627584}
+  searchDef: {fileID: 175787725}
