@@ -11,14 +11,14 @@ public class StudentScript : MonoBehaviour
     [SerializeField] InputField Mname;
     [SerializeField] InputField StudentID;
     [SerializeField] InputField SchoolID;
-    [SerializeField] InputField TrGameID;
+    [SerializeField] InputField TrGameIDField;
     [SerializeField] Dropdown gradeLvl;
     [SerializeField] Text msgTxt;
     string studPwd = "helloworld";
     WWWForm form;
 
     public void AddStudBtn(){
-        if(Lname.text == "" | Fname.text == "" | Mname.text == "" | StudentID.text == "" | SchoolID.text == "" | TrGameID.text == ""){
+        if(Lname.text == "" | Fname.text == "" | Mname.text == "" | StudentID.text == "" | SchoolID.text == "" | TrGameIDField.text == ""){
             msgTxt.text = "<color=red>Please fill up all fields</color>";
             Debug.Log("Please fill up all fields");
         }
@@ -35,7 +35,7 @@ public class StudentScript : MonoBehaviour
         form.AddField("Mname", Mname.text);
         form.AddField("Number", StudentID.text);
         form.AddField("SchoolID", SchoolID.text);
-        form.AddField("TrGameID", TrGameID.text);
+        form.AddField("TeacherID", TrGameIDField.text);
         form.AddField("GradeLvl", gradeLvl.options[gradeLvl.value].text);
         form.AddField("Password", studPwd);
 
@@ -68,7 +68,7 @@ public class StudentScript : MonoBehaviour
         Mname.text = "";
         StudentID.text = "";
         SchoolID.text = "";
-        TrGameID.text = "";
+        TrGameIDField.text = "";
     }
 
 }

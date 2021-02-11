@@ -54,6 +54,6 @@ public class RegisterScript : MonoBehaviour
     }
 
     public void LogOutBtn(){
-		SceneManager.LoadScene(sceneName:"LoginScene");
+		SceneManager.LoadScene(sceneName:"AdminLoginScene");
 	}
 }
