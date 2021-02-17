@@ -27,8 +27,14 @@ EditorBuildSettings:
     path: Assets/Scenes/createNewRoom.unity
     guid: f201ffb233158264881393c6007756aa
   - enabled: 1
+    path: Assets/Scenes/RoomScene.unity
+    guid: 119327a1d91dfa24e879f2a0867b739b
+  - enabled: 1
     path: Assets/Scenes/TopicScene.unity
     guid: fb02e0dd161fa1b46ae8a8059c95c720
+  - enabled: 1
+    path: Assets/Scenes/StudentLogin.unity
+    guid: 63fa05b28e2ea9d4b814939e03d8fa18
   - enabled: 1
     path: Assets/Scenes/DictScene.unity
     guid: 4b3d5878a4b453b4fb807eecff05bb19

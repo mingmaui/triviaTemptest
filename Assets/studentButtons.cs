@@ -9,8 +9,9 @@ public class studentButtons : MonoBehaviour
     public void LogoutStudent(){
         SceneManager.LoadScene(sceneName:"LoginScene");
     }
-    public void RedirectToTriviaScene(){
-        SceneManager.LoadScene(sceneName:"TriviaScene");
+    
+    public void RedirectToRoomScene(){
+        SceneManager.LoadScene(sceneName:"RoomScene");
     }
 
     public void RedirectToEndlessScene(){

@@ -1,43 +1,42 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class TeacherLogin : MonoBehaviour
+public class StudentLoginScript : MonoBehaviour
 {
-	[SerializeField] InputField Number;
+    [SerializeField] InputField Number;
 	[SerializeField] InputField password;
 	[SerializeField] Text errorTxt;
-    
-	//[SerializeField] GameObject progressCircle;
 	
 	WWWForm form;
 
 
 	public void OnLoginButtonClicked ()
 	{
-		//progressCircle.SetActive (true);
+		
 		if(Number.text == "" | password.text == ""){
 			errorTxt.text = "<color=red>Please fill up all fields</color>";
 			Debug.Log("Please fill up all fields");
 		}
 
 		else{
-			StartCoroutine (Login ());
+			StartCoroutine (Login());
 		}
 		
 	}
 
-	IEnumerator Login ()
+	IEnumerator Login()
 	{
 		form = new WWWForm ();
 
 		form.AddField ("Number", Number.text);
         string hash = Hash(password.text);
 		form.AddField ("Password", hash);
+        //Debug.Log(hash);
 
-		WWW w = new WWW ("http://localhost/TriviaTempest/login_teacher.php", form);
+		WWW w = new WWW ("http://localhost/TriviaTempest/login_student.php", form);
 		yield return w;
 
 		if (w.error != null) {
@@ -51,7 +50,7 @@ public class TeacherLogin : MonoBehaviour
 					Debug.Log("<color=red>"+errorTxt.text+"</color>");//error
 				} 
                 else {
-					SceneManager.LoadScene(sceneName:"TeacherMenu");
+					SceneManager.LoadScene(sceneName:"StudentMenu");
                     Debug.Log("Login Successful");
 					Debug.Log(w.text);//user exist
 				}
@@ -75,5 +74,5 @@ public class TeacherLogin : MonoBehaviour
                     .GetBytes(s)
             )
     ).Replace("-","");
-
+    
 }

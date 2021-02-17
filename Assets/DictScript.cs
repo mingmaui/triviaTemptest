@@ -21,7 +21,6 @@ public class DictScript : MonoBehaviour
         if(txtBoxSearch.text == ""){
             showSearch.text = "<color=red>Please enter a word</color>";
             Debug.Log("<color=red>"+showSearch.text+"</color>");
-
         }
 
         else{

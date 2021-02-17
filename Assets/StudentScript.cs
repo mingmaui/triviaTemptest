@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
@@ -12,13 +13,14 @@ public class StudentScript : MonoBehaviour
     [SerializeField] InputField StudentID;
     [SerializeField] InputField SchoolID;
     [SerializeField] InputField TrGameIDField;
+    [SerializeField] InputField PasswordField;
     [SerializeField] Dropdown gradeLvl;
     [SerializeField] Text msgTxt;
-    string studPwd = "helloworld";
+    //string studPwd = "helloworld";
     WWWForm form;
 
     public void AddStudBtn(){
-        if(Lname.text == "" | Fname.text == "" | Mname.text == "" | StudentID.text == "" | SchoolID.text == "" | TrGameIDField.text == ""){
+        if(Lname.text == "" | Fname.text == "" | Mname.text == "" | StudentID.text == "" | SchoolID.text == "" | TrGameIDField.text == "" | PasswordField.text == ""){
             msgTxt.text = "<color=red>Please fill up all fields</color>";
             Debug.Log("Please fill up all fields");
         }
@@ -37,7 +39,10 @@ public class StudentScript : MonoBehaviour
         form.AddField("SchoolID", SchoolID.text);
         form.AddField("TeacherID", TrGameIDField.text);
         form.AddField("GradeLvl", gradeLvl.options[gradeLvl.value].text);
-        form.AddField("Password", studPwd);
+        form.AddField("Password", PasswordField.text);
+
+        string hash = Hash(PasswordField.text);
+		form.AddField ("Password", hash);
 
         UnityWebRequest w = UnityWebRequest.Post("http://localhost/TriviaTempest/add_student.php", form);
         yield return w.SendWebRequest();
@@ -58,6 +63,19 @@ public class StudentScript : MonoBehaviour
         w.Dispose();
     }
 
+    public static string Hash(string s)
+    => BitConverter.ToString(
+        System.Security
+            .Cryptography.MD5
+            .Create()
+            .ComputeHash(
+                System.Text
+                    .Encoding
+                    .UTF8
+                    .GetBytes(s)
+            )
+    ).Replace("-","");
+
     public void BackBtn(){
         SceneManager.LoadScene(sceneName:"AdminMenu");
     }
@@ -69,6 +87,7 @@ public class StudentScript : MonoBehaviour
         StudentID.text = "";
         SchoolID.text = "";
         TrGameIDField.text = "";
+        PasswordField.text="";
     }
 
 }
