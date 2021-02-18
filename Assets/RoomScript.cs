@@ -28,10 +28,6 @@ public class RoomScript : MonoBehaviour
             Debug.Log("<color=red>"+showMessage.text+"</color>");
         }
 
-        // else if(txtBoxRoom.text != )
-        // {
-        // }
-
         else{
             StartCoroutine(FindRoom());
         }
@@ -40,7 +36,7 @@ public class RoomScript : MonoBehaviour
     IEnumerator FindRoom()
     {
         form = new WWWForm();
-        form.AddField ("RoomID", txtBoxRoom.text);
+        form.AddField ("RoomID", txtBoxRoom.text.ToUpper());
 
         WWW w = new WWW ("http://localhost/TriviaTempest/get_roomcode.php", form);
 		yield return w;
@@ -72,8 +68,4 @@ public class RoomScript : MonoBehaviour
             }
         }
     }
-
-    // public void RedirectToTriviaScene(){
-    //     SceneManager.LoadScene(sceneName:"TriviaScene");
-    // }
 }
