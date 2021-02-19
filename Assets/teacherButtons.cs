@@ -14,6 +14,11 @@ public class teacherButtons : MonoBehaviour
         SceneManager.LoadScene(sceneName:"RegisterScene");
     }
 
+    public void Select(){
+        StartCoroutine (sessionEnd ());
+        SceneManager.LoadScene(sceneName:"SelectScene");
+    }
+
     public void ExitGame(){
         StartCoroutine (sessionEnd ());
         Application.Quit();

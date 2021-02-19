@@ -34,7 +34,6 @@ public class StudentLoginScript : MonoBehaviour
 		form.AddField ("Number", Number.text);
         string hash = Hash(password.text);
 		form.AddField ("Password", hash);
-        //Debug.Log(hash);
 
 		WWW w = new WWW ("http://localhost/TriviaTempest/login_student.php", form);
 		yield return w;
@@ -56,8 +55,6 @@ public class StudentLoginScript : MonoBehaviour
 				}
 			}
 		}
-
-		//progressCircle.SetActive (false);
 
 		w.Dispose ();
 	}

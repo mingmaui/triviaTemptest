@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 180573504}
   - component: {fileID: 180573503}
   m_Layer: 5
-  m_Name: Text
+  m_Name: score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -408,7 +408,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 25
+  m_Text: 0
 --- !u!222 &180573504
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1827,7 +1827,9 @@ MonoBehaviour:
   displayAnswer: {fileID: 526761805}
   displayDesc: {fileID: 1816951503}
   inputAns: {fileID: 115036687}
+  scoreBoard: {fileID: 180573503}
   SessionCode: 
+  score: 0
 --- !u!1 &2109849407
 GameObject:
   m_ObjectHideFlags: 0

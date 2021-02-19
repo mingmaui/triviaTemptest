@@ -7,8 +7,15 @@ public class studentButtons : MonoBehaviour
 {
 
     public void LogoutStudent(){
-        SceneManager.LoadScene(sceneName:"LoginScene");
+        StartCoroutine (sessionEnd ());
+        SceneManager.LoadScene(sceneName:"StudentLogin");
     }
+
+    public void Select(){
+        StartCoroutine (sessionEnd ());
+        SceneManager.LoadScene(sceneName:"SelectScene");
+    }
+
     public void RedirectToRoomScene(){
         SceneManager.LoadScene(sceneName:"RoomScene");
     }
@@ -34,6 +41,19 @@ public class studentButtons : MonoBehaviour
 
     public void ReturnToStudentMenu(){
         SceneManager.LoadScene(sceneName:"StudentMenu");
+    }
+
+    public void ExitGame(){
+        StartCoroutine (sessionEnd ());
+        Application.Quit();
+    }
+
+    IEnumerator sessionEnd(){
+        WWW w = new WWW ("http://localhost/TriviaTempest/endSession.php");
+        yield return w;
+        if(w.text.Contains("Success")){
+            Debug.Log("<color=red>Session Cleared</color>");
+        }
     }
 
 }
