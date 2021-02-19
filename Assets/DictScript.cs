@@ -23,7 +23,8 @@ public class DictScript : MonoBehaviour
             Debug.Log("<color=red>"+showSearch.text+"</color>");
         }
 
-        else{
+        else
+        {
             StartCoroutine(FindWord("http://localhost/TriviaTempest/search_dict.php"));
         }
     }
