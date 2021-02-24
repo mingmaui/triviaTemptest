@@ -12,6 +12,9 @@ public class TriviaScript : MonoBehaviour
     public InputField inputAns;
     public Text scoreBoard;
     public string SessionCode = "";
+    public GameObject gameScene;
+    public GameObject scoreScene;
+    public Text finalScoreUI;
     List<List<string>> container = new List<List<string>>();
     
     private int score = 0;
@@ -73,7 +76,14 @@ public class TriviaScript : MonoBehaviour
     public void checker(){
         if(current >= container.Count){
             StartCoroutine(SubmitScore("http://localhost/TriviaTempest/submit_scrTM.php"));
+            showScore();
         }
+    }
+
+    public void showScore(){
+        gameScene.SetActive(false);
+        scoreScene.SetActive(true);
+        finalScoreUI.text = score.ToString();
     }
 
     

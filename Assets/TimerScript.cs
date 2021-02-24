@@ -15,29 +15,32 @@ public class TimerScript: MonoBehaviour
 
     private TimeSpan timePlaying;
     private bool timerActive;
+    public TriviaScript ts;
 
     private float countDown;
+
+    void Start(){
+        TimerStart();
+    }
 
     private void GameStart() {
         instance = this;
     }
 
     private void TimerSet(){
-        timeCounter.text = "25.00";
+        timeCounter.text = "23.00";
     }
 
     public void TimerStart(){
         timerActive = true;
-        countDown = 5f;
+        countDown = 23f;
 
         StartCoroutine(TimerGoing());
     }
 
     public void TimerEnd(){
         timerActive = false;
-
-        //temporaryGameOver
-        GameObject.FindWithTag("gameTag").SetActive(false);
+        ts.showScore();
     }
 
     private IEnumerator TimerGoing(){
