@@ -10,17 +10,17 @@ public class StudentScript : MonoBehaviour
     [SerializeField] InputField Lname;
     [SerializeField] InputField Fname;
     [SerializeField] InputField Mname;
-    [SerializeField] InputField StudentID;
-    [SerializeField] InputField SchoolID;
-    [SerializeField] InputField TrGameIDField;
+    [SerializeField] InputField StudNum;
+    [SerializeField] InputField SchoolName;
+    [SerializeField] InputField TrNumber;
     [SerializeField] InputField PasswordField;
     [SerializeField] Dropdown gradeLvl;
     [SerializeField] Text msgTxt;
-    //string studPwd = "helloworld";
+    int studStatus = 1;
     WWWForm form;
 
     public void AddStudBtn(){
-        if(Lname.text == "" | Fname.text == "" | Mname.text == "" | StudentID.text == "" | SchoolID.text == "" | TrGameIDField.text == "" | PasswordField.text == ""){
+        if(Lname.text == "" | Fname.text == "" | Mname.text == "" | StudNum.text == "" | SchoolName.text == "" | PasswordField.text == "" | TrNumber.text == ""){
             msgTxt.text = "<color=red>Please fill up all fields</color>";
             Debug.Log("Please fill up all fields");
         }
@@ -31,15 +31,18 @@ public class StudentScript : MonoBehaviour
     }
 
     IEnumerator AddStudent(){
+        string setGradeLvl = gradeLvl.options[gradeLvl.value].text;
+
         form = new WWWForm();
         form.AddField("Lname", Lname.text);
         form.AddField("Fname", Fname.text);
         form.AddField("Mname", Mname.text);
-        form.AddField("Number", StudentID.text);
-        form.AddField("SchoolID", SchoolID.text);
-        form.AddField("TeacherID", TrGameIDField.text);
-        form.AddField("GradeLvl", gradeLvl.options[gradeLvl.value].text);
+        form.AddField("Number", StudNum.text);
+        form.AddField("SchoolName", SchoolName.text);
+        form.AddField("TeacherID", TrNumber.text);
+        form.AddField("GradeLvl", setGradeLvl);
         form.AddField("Password", PasswordField.text);
+        form.AddField("Status", studStatus);
 
         string hash = Hash(PasswordField.text);
 		form.AddField ("Password", hash);
@@ -80,14 +83,19 @@ public class StudentScript : MonoBehaviour
         SceneManager.LoadScene(sceneName:"AdminMenu");
     }
 
+    public void ViewStudentBtn(){
+        SceneManager.LoadScene(sceneName:"ViewStudent");
+    }
+
     public void ClearBtn(){
         Lname.text = "";
         Fname.text = "";
         Mname.text = "";
-        StudentID.text = "";
-        SchoolID.text = "";
-        TrGameIDField.text = "";
-        PasswordField.text="";
+        StudNum.text = "";
+        SchoolName.text = "";
+        TrNumber.text = "";
+        PasswordField.text = "";
+        msgTxt.text = "";
     }
 
 }

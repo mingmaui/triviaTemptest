@@ -14,6 +14,10 @@ public class teacherButtons : MonoBehaviour
         SceneManager.LoadScene(sceneName:"RegisterScene");
     }
 
+    public void AdminButton(){
+        SceneManager.LoadScene(sceneName:"AdminLogin");
+    }
+
     public void Select(){
         StartCoroutine (sessionEnd ());
         SceneManager.LoadScene(sceneName:"SelectScene");

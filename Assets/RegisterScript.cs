@@ -8,6 +8,7 @@ public class RegisterScript : MonoBehaviour
     [SerializeField] InputField SchoolName;
     [SerializeField] Button RegSBtn;
     [SerializeField] Text msgTxt;
+    int schoolStatus = 1;
 
     WWWForm form;
 
@@ -24,11 +25,13 @@ public class RegisterScript : MonoBehaviour
     }
 
     IEnumerator RegSchool(){
+        //int varStatus = int.Parse(schoolStatus);
         form = new WWWForm();
     
         form.AddField("SchoolName", SchoolName.text);
+        form.AddField("Status", schoolStatus);
 
-        UnityWebRequest w = UnityWebRequest.Post("http://localhost/TriviaTempest/register.php", form);
+        UnityWebRequest w = UnityWebRequest.Post("http://localhost/TriviaTempest/register_school.php", form);
 		yield return w.SendWebRequest();
 
         if(w.isNetworkError) {
@@ -53,7 +56,11 @@ public class RegisterScript : MonoBehaviour
         SceneManager.LoadScene(sceneName:"AddTrScene");
     }
 
+    public void ViewSchoolBtn(){
+        SceneManager.LoadScene(sceneName:"ViewSchool");
+    }
+
     public void LogOutBtn(){
-		SceneManager.LoadScene(sceneName:"AdminLoginScene");
+		SceneManager.LoadScene(sceneName:"AdminLogin");
 	}
 }

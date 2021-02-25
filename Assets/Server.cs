@@ -13,7 +13,7 @@ public class Server : MonoBehaviour
 	
 	WWWForm form;
 
-	public void OnLoginButtonClicked()
+	public void OnLoginButtonClicked ()
 	{
 		//progressCircle.SetActive (true);
 		if(username.text == "" | password.text == ""){
@@ -22,17 +22,17 @@ public class Server : MonoBehaviour
 		}
 
 		else{
-			StartCoroutine(Login());
+			StartCoroutine (Login ());
 		}
 		
 	}
 
-	IEnumerator Login()
+	IEnumerator Login ()
 	{
 		form = new WWWForm ();
 
-		form.AddField ("Username", username.text);
-		form.AddField ("Password", password.text);
+		form.AddField ("username", username.text);
+		form.AddField ("password", password.text);
 
 		WWW w = new WWW ("http://localhost/TriviaTempest/login_admin.php", form);
 		yield return w;

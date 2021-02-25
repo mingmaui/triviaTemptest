@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AdminMenu.unity
     guid: b042621ec7730e14482342dde2676562
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AdminLoginScene.unity
     guid: 7f3918a4a1b4d2a4aa847acef662bdaa
   - enabled: 1
@@ -30,8 +30,14 @@ EditorBuildSettings:
     path: Assets/Scenes/TopicScene.unity
     guid: fb02e0dd161fa1b46ae8a8059c95c720
   - enabled: 1
+    path: Assets/Scenes/AdminLogin.unity
+    guid: e9a62c8e4583bba4aa84115c68ffc509
+  - enabled: 1
     path: Assets/Scenes/StudentLogin.unity
     guid: 63fa05b28e2ea9d4b814939e03d8fa18
+  - enabled: 1
+    path: Assets/Scenes/AddTrScene.unity
+    guid: bad9f4e6b847f1d4585f3d2e6868203a
   - enabled: 1
     path: Assets/Scenes/DictScene.unity
     guid: 4b3d5878a4b453b4fb807eecff05bb19
@@ -39,11 +45,20 @@ EditorBuildSettings:
     path: Assets/Scenes/EndlessScene.unity
     guid: 858b71d58bdc03e408f5be26849d0bcd
   - enabled: 1
+    path: Assets/Scenes/ViewTeacher.unity
+    guid: d521b930e23e9464795abdb2284fe04e
+  - enabled: 1
     path: Assets/Scenes/AddStudScene.unity
     guid: bc96c261cb848214e82abcd6801b960d
   - enabled: 1
-    path: Assets/Scenes/AddTrScene.unity
-    guid: 724ce36527e50244c8c548d9d83e2849
+    path: Assets/Scenes/ViewSchool.unity
+    guid: 191f62d986459fb4eb386a9e621f8dfa
+  - enabled: 1
+    path: Assets/Scenes/ViewStudent.unity
+    guid: 57f8d29ebd3254a44acaca47dc8ab0a4
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/HelpStudScene.unity
     guid: d81034916824a6f40b9c3e4c66063674
